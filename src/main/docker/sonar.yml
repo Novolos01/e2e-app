@@ -1,0 +1,8 @@
+version: '2'
+services:
+    e2e-sonar:
+        container_name: e2e-sonar
+        image: sonarqube:5.6-alpine
+        ports:
+            - 9000:9000
+            - 9092:9092

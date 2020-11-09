@@ -1,0 +1,13 @@
+version: '2'
+services:
+    e2e-mariadb:
+        container_name: e2e-mariadb
+        image: mariadb:10.1.16
+        # volumes:
+        #     - ~/volumes/jhipster/e2e/mysql/:/var/lib/mysql/
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=e2e
+        ports:
+            - 3306:3306

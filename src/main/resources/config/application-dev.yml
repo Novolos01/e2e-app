@@ -1,0 +1,93 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+
+spring:
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: false # we use gulp + BrowserSync for livereload
+    jackson:
+        serialization.indent_output: true
+    datasource:
+        url: jdbc:mysql://<database-url>/e2e?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+        username: <username>
+        password: <password>
+        hikari:
+            max-lifetime: 28700000
+            leak-detection-threshold: 10000
+    h2:
+        console:
+            enabled: false
+    jpa:
+        hibernate:
+            dialect: org.hibernate.dialect.MySQLDialect
+            use-new-id-generator-mappings: false
+        show-sql: false
+    data:
+        elasticsearch:
+            cluster-name:
+            cluster-nodes:
+            properties:
+                path:
+                  logs: target/elasticsearch/log
+                  data: target/elasticsearch/data
+    mail:
+        host: localhost
+        port: 25
+        username:
+        password:
+    messages:
+        cache-seconds: 1
+    thymeleaf:
+        cache: false
+    profiles:
+        include: swagger # automatically set the 'swagger' profile
+
+liquibase:
+    contexts: dev
+
+server:
+    port: 8080
+
+# ===================================================================
+# JHipster specific properties
+# ===================================================================
+
+jhipster:
+    security:
+        rememberMe:
+            # security key (this key should be unique for your application, and kept secret)
+            key: 6e1f991ef45dc66156b57ff22cfbe9ca8d514798
+    mail: # specific JHipster mail property, for standard properties see MailProperties
+        from: e2e@localhost
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx.enabled: true
+        spark:
+            enabled: false
+            host: localhost
+            port: 9999
+        graphite:
+            enabled: false
+            host: localhost
+            port: 2003
+            prefix: e2e
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            reportFrequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queueSize: 512
