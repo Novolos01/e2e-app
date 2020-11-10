@@ -116,7 +116,7 @@ example: for Georgios Papadopoulos, the branch would be
     
 and push the project with the solution to that branch.
 
-In case you are not able to push your code to GitHub, you can compress the "src" folder of the project and send it to the assessor by email but the 10 points will be lost. Files outside the src folder should only be included in the compressed file if the candidate has made changes to them.
+In case you are not able to push your code to GitHub, you can compress the "src" folder of the project and send it to the assessor by email but the 5 points will be lost. Files outside the src folder should only be included in the compressed file if the candidate has made changes to them.
 
 ## Finalization
 
